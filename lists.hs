@@ -1,3 +1,7 @@
+{-
+  Haskell 1-10 problems (for Lists): https://wiki.haskell.org/99_questions/1_to_10
+-}
+
 import Data.List
 
 -- 01 last element in the list
@@ -38,3 +42,16 @@ myReverse :: [a] -> [a]
 myReverse [x] = [x]
 myReverse list = (last list) : myReverse (init list)
  
+-- 06 List is palindrome or not
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome [] = True
+isPalindrome [x] = True
+isPalindrome list
+  | head list /= last list = False
+  | otherwise = isPalindrome $ tail $ init list
+
+-- 07 Flatten a list
+data NestedList a = Elem a | List [NestedList a]
+flatten :: NestedList a -> [a]
+flatten (Elem x) = [x]
+-- Will come back to it soon, feeling bored right now
